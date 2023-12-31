@@ -1,7 +1,9 @@
 import { Cordenadas } from '../cordenadas/cordenadas';
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import styles from './mapRender.module.css';
+
 
 export function MapRender() {
   useEffect(() => {
@@ -19,6 +21,7 @@ export function MapRender() {
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
+        // eslint-disable-next-line no-unused-vars
         const marker = L.marker([cordenadas.latitude, cordenadas.longitude]).addTo(map);
       }
    
@@ -32,6 +35,8 @@ export function MapRender() {
   }, []); // Passar um array vazio como dependência garante que useEffect é executado apenas uma vez, sem dependências
 
   return (
-    <div id="map" style={{ height: '400px' }}></div>
+    <div className={styles.map}>
+    <div id="map" style={{ width: '900px' , height:'200px'}}></div>
+    </div>
   );
 }
